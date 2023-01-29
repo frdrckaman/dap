@@ -162,55 +162,55 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
                                     <div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Send BizWize Daily reports to respective stakeholders
+										 <label class="checkbox"><input name="daily_report" type="checkbox" value="1"> Send BizWize Daily reports to respective stakeholders
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Recon Automation Reports
+										 <label class="checkbox"><input name="recon_auto" type="checkbox" value="1"> Recon Automation Reports
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> CRM Audit Trail Reports
+										 <label class="checkbox"><input name="crm_audit" type="checkbox" value="1"> CRM Audit Trail Reports
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Recoveries Reports
+										 <label class="checkbox"><input name="recoveries_reports" type="checkbox" value="1"> Recoveries Reports
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Run Credit CAET Reports every 1st day of the Month
+										 <label class="checkbox"><input name="credit_caet" type="checkbox" value="1"> Run Credit CAET Reports every 1st day of the Month
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Connect and confirm availability of database servers, if not available escalate to network team
+										 <label class="checkbox"><input name="ora_server_availability" type="checkbox" value="1"> ORACLE - Connect and confirm availability of database servers, if not available escalate to network team
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure there is enough disk space on the filesystems, if not backup and clear old files
+										 <label class="checkbox"><input name="ora_disk_space" type="checkbox" value="1"> ORACLE - Ensure there is enough disk space on the filesystems, if not backup and clear old files
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure listeners and their services are up and running
+										 <label class="checkbox"><input name="ora_listener" type="checkbox" value="1"> ORACLE - Ensure listeners and their services are up and running
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure database Status is OPEN from gv$ instance view, if not investigate and start up the instance
+										 <label class="checkbox"><input name="ora_db_status" type="checkbox" value="1"> ORACLE - Ensure database Status is OPEN from gv$ instance view, if not investigate and start up the instance
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure space for Archive Switching is available, if not backup and clear old archives.
+										 <label class="checkbox"><input name="ora_db_space_archive" type="checkbox" value="1"> ORACLE - Ensure space for Archive Switching is available, if not backup and clear old archives.
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure all Grid Infrastructure services from Cluster are online, if not investigate and start the Grid services
+										 <label class="checkbox"><input name="ora_cluster" type="checkbox" value="1"> ORACLE - Ensure all Grid Infrastructure services from Cluster are online, if not investigate and start the Grid services
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure backups are configured properly and running
+										 <label class="checkbox"><input name="ora_backup_config" type="checkbox" value="1"> ORACLE - Ensure backups are configured properly and running
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually
+										 <label class="checkbox"><input name="ora_backup_status" type="checkbox" value="1"> ORACLE - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Check if there are locked, expired and inactive users, if found investigate and action accordingly	
+										 <label class="checkbox"><input name="ora_users" type="checkbox" value="1"> ORACLE - Check if there are locked, expired and inactive users, if found investigate and action accordingly
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Check if space used on permanent and temporary table spaces are below 80%, if not Increase tablespace
+										 <label class="checkbox"><input name="ora_table_space" type="checkbox" value="1"> ORACLE - Check if space used on permanent and temporary table spaces are below 80%, if not Increase tablespace
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Check the ASM disks on same disk group must have evenly distributed space usage, rebalance disks and or log an IR to have storage added to disk groups
+										 <label class="checkbox"><input name="ora_asm" type="checkbox" value="1"> ORACLE - Check the ASM disks on same disk group must have evenly distributed space usage, rebalance disks and or log an IR to have storage added to disk groups
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> ORACLE - Ensure database replication between Production and DR is running, if not running investigate and rectify accordingly
+										 <label class="checkbox"><input name="oral_replication" type="checkbox" value="1"> ORACLE - Ensure database replication between Production and DR is running, if not running investigate and rectify accordingly
                                     </div>
 
                                     
@@ -230,25 +230,25 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Ensure backups are configured properly and running
+										 <label class="checkbox"><input name="sql_backup_config" type="checkbox" value="1"> SQL - Ensure backups are configured properly and running
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually
+										 <label class="checkbox"><input name="sql_backup_status" type="checkbox" value="1"> SQL - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Ensure there is enough disk space on the database servers, if not backup and clear old files
+										 <label class="checkbox"><input name="sql_disk_space" type="checkbox" value="1"> SQL - Ensure there is enough disk space on the database servers, if not backup and clear old files
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Connect and confirm availability of database servers, if not available escalate to network team
+										 <label class="checkbox"><input name="sql_availability" type="checkbox" value="1"> SQL - Connect and confirm availability of database servers, if not available escalate to network team
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Check if there are locked, expired and inactive users, if found investigate and action accordingly
+										 <label class="checkbox"><input name="sql_users" type="checkbox" value="1"> SQL - Check if there are locked, expired and inactive users, if found investigate and action accordingly
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Ensure cluster servers are in sync between Production and DR
+										 <label class="checkbox"><input name="sql_sync" type="checkbox" value="1"> SQL - Ensure cluster servers are in sync between Production and DR
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SQL - Ensure listeners and their services are up and running
+										 <label class="checkbox"><input name="sql_services" type="checkbox" value="1"> SQL - Ensure listeners and their services are up and running
                                     </div>
                                     
                                     <div class="footer tar">
@@ -267,85 +267,85 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
                                     <div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> NOTE: In the morning confirm MMF has been run successful
+										 <label class="checkbox"><input name="mmf" type="checkbox" value="1"> NOTE: In the morning confirm MMF has been run successful
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Run Sparrow ATM EOD/EOY (ref: Atm eod ? procedure)
+										 <label class="checkbox"><input name="sparrow" type="checkbox" value="1"> Run Sparrow ATM EOD/EOY (ref: Atm eod ? procedure)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Excute query to check table space for CUSTOM_TBLS, the PCT. Free should be >20%
+										 <label class="checkbox"><input name="pct" type="checkbox" value="1"> Excute query to check table space for CUSTOM_TBLS, the PCT. Free should be >20%
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Check disk space for all disk in CAP and JAP servers used space should not be more than 80%
+										 <label class="checkbox"><input name="cap" type="checkbox" value="1"> Check disk space for all disk in CAP and JAP servers used space should not be more than 80%
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Restart Finacle services for PTZCORCAPW1 & PTZCORCAPW2 node by node
+										 <label class="checkbox"><input name="fin" type="checkbox" value="1"> Restart Finacle services for PTZCORCAPW1 & PTZCORCAPW2 node by node
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm GPOD EOD has run and and file received in TBMS
+										 <label class="checkbox"><input name="gpod" type="checkbox" value="1"> Confirm GPOD EOD has run and and file received in TBMS
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm CHQENC (Cheque encashment) job has run in control m
+										 <label class="checkbox"><input name="cheque" type="checkbox" value="1"> Confirm CHQENC (Cheque encashment) job has run in control m
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm if there is no file in /gpfsfcb/prd/TZ/in/pricing. If there is a file backup in different, dirrectorry and delete the file in pricing directory after confirmation from pricing team
+										 <label class="checkbox"><input name="pricing" type="checkbox" value="1"> Confirm if there is no file in /gpfsfcb/prd/TZ/in/pricing. If there is a file backup in different, dirrectorry and delete the file in pricing directory after confirmation from pricing team
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Check the space on TBMS both nodes (df )
+										 <label class="checkbox"><input name="tbms" type="checkbox" value="1"> Check the space on TBMS both nodes (df )
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> CHECK ALL SERVICES ARE UP: (admin view option)
+										 <label class="checkbox"><input name="services" type="checkbox" value="1"> CHECK ALL SERVICES ARE UP: (admin view option)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Check all EOY jobs in BJS if they have correct dates (SELECT * FROM TBAADM.BJS WHERE JOB_FREG_TYPE='Y' AND DEL_FLG='N';)
+										 <label class="checkbox"><input name="bjs" type="checkbox" value="1"> Check all EOY jobs in BJS if they have correct dates (SELECT * FROM TBAADM.BJS WHERE JOB_FREG_TYPE='Y' AND DEL_FLG='N';)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Unfreeze the suspence and income accounts to allow zerolisation (to be shared by application team)
+										 <label class="checkbox"><input name="unfreeze" type="checkbox" value="1"> Unfreeze the suspence and income accounts to allow zerolisation (to be shared by application team)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm the EOY jobs are loaded with the correct dates
+										 <label class="checkbox"><input name="eoy" type="checkbox" value="1"> Confirm the EOY jobs are loaded with the correct dates
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Hold the HBKCOP job before starting EOY and will be released once the pricing files are received
+										 <label class="checkbox"><input name="hbkcop" type="checkbox" value="1"> Hold the HBKCOP job before starting EOY and will be released once the pricing files are received
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Start finacle EOY - from ControL'M
+										 <label class="checkbox"><input name="controlm" type="checkbox" value="1"> Start finacle EOY - from ControL'M
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm if there are 20 .dat files and 20 .done files in the path: /gpfssun/prd/tz/Mediation/CAF/in
+										 <label class="checkbox"><input name="caf" type="checkbox" value="1"> Confirm if there are 20 .dat files and 20 .done files in the path: /gpfssun/prd/tz/Mediation/CAF/in
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Below commands must return a count of 20 (or more if an extra file was generated during the day) ls -lrt SUNPRIACCTDET*.dat | wc -l ls -lrt SUNPRIACCTDET*.dat.done | wc -l
+										 <label class="checkbox"><input name="det" type="checkbox" value="1"> Below commands must return a count of 20 (or more if an extra file was generated during the day) ls -lrt SUNPRIACCTDET*.dat | wc -l ls -lrt SUNPRIACCTDET*.dat.done | wc -l
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Hold TZ_EOD_JOB_GRP_007 job from control m and release when SNPRIBALANCEDWLD received under gpfsun/prd/Mediation/Bal/in
+										 <label class="checkbox"><input name="wld" type="checkbox" value="1"> Hold TZ_EOD_JOB_GRP_007 job from control m and release when SNPRIBALANCEDWLD received under gpfsun/prd/Mediation/Bal/in
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> PRICING processing(Release TBMS jobs)
+										 <label class="checkbox"><input name="jobs" type="checkbox" value="1"> PRICING processing(Release TBMS jobs)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Proceed With Finacle EOY
+										 <label class="checkbox"><input name="fin_eoy" type="checkbox" value="1"> Proceed With Finacle EOY
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Post EOY Checks
+										 <label class="checkbox"><input name="post_eoy" type="checkbox" value="1"> Post EOY Checks
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm with Finance to check the reports and confirm zerolisation
+										 <label class="checkbox"><input name="zero" type="checkbox" value="1"> Confirm with Finance to check the reports and confirm zerolisation
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> GBM team to pull their data and confirm
+										 <label class="checkbox"><input name="gbm" type="checkbox" value="1"> GBM team to pull their data and confirm
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Check if all the EOD reports have been indexed to datastore10.231.128.117)
+										 <label class="checkbox"><input name="datastore" type="checkbox" value="1"> Check if all the EOD reports have been indexed to datastore10.231.128.117)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Run query to return freeze code as before (shared by application team)
+										 <label class="checkbox"><input name="code" type="checkbox" value="1"> Run query to return freeze code as before (shared by application team)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy GLIRR reports to its respective folder
+										 <label class="checkbox"><input name="glirr" type="checkbox" value="1"> Copy GLIRR reports to its respective folder
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Start ODS EOY
+										 <label class="checkbox"><input name="ods" type="checkbox" value="1"> Start ODS EOY
                                     </div>
 
                                     
@@ -365,115 +365,115 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
                                     <div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy ICTF file from the Connect Direct Server (BPWIN7\CDTransfers\Sparrow\bin) to Sparrow (sparrow/TZ/PRD/sparrow8/floppy)
+										 <label class="checkbox"><input name="ictf" type="checkbox" value="1"> Copy ICTF file from the Connect Direct Server (BPWIN7\CDTransfers\Sparrow\bin) to Sparrow (sparrow/TZ/PRD/sparrow8/floppy)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> In floppy path,rename the file to inctf01.i01
+										 <label class="checkbox"><input name="floppy" type="checkbox" value="1"> In floppy path,rename the file to inctf01.i01
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Change the file permission to chmod 660 on inctf01.i01 file
+										 <label class="checkbox"><input name="chmod_1" type="checkbox" value="1"> Change the file permission to chmod 660 on inctf01.i01 file
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Login to the ENA FOREGROUND Super->Archive/Purge Expired B1 Type C (accept the default options)
+										 <label class="checkbox"><input name="ena" type="checkbox" value="1"> Login to the ENA FOREGROUND Super->Archive/Purge Expired B1 Type C (accept the default options)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> BASE II Stanbic CTF Clearing
+										 <label class="checkbox"><input name="base_ctf" type="checkbox" value="1"> BASE II Stanbic CTF Clearing
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Accept the default format CTF-file name [a:inctf01.i01 ] NOTE: If the following message is displayed at this stage Settlement date [*****] postings already exist in logs. Continue or Quit C/Q (If you get this error it mean the ICTF for this day has been processed already, continuing will cause duplicates on FINACLE)**** Investigate first
+										 <label class="checkbox"><input name="ctf" type="checkbox" value="1"> Accept the default format CTF-file name [a:inctf01.i01 ] NOTE: If the following message is displayed at this stage Settlement date [*****] postings already exist in logs. Continue or Quit C/Q (If you get this error it mean the ICTF for this day has been processed already, continuing will cause duplicates on FINACLE)**** Investigate first
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Type C to Continue
+										 <label class="checkbox"><input name="type_c_cont" type="checkbox" value="1"> Type C to Continue
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Records processed - Press any key to continue
+										 <label class="checkbox"><input name="record_processed" type="checkbox" value="1"> Records processed - Press any key to continue
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Automated CTF processing completed without errors - Press any key to continue
+										 <label class="checkbox"><input name="auto_ctf" type="checkbox" value="1"> Automated CTF processing completed without errors - Press any key to continue
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> S/Rpt->Outgoing Chargeback Report
+										 <label class="checkbox"><input name="rpt_chargeback" type="checkbox" value="1"> S/Rpt->Outgoing Chargeback Report
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Accept default date
+										 <label class="checkbox"><input name="accept_default" type="checkbox" value="1"> Accept default date
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Y (Yes)
+										 <label class="checkbox"><input name="type" type="checkbox" value="1"> Y (Yes)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Type C
+										 <label class="checkbox"><input name="type_c" type="checkbox" value="1"> Type C
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Select printer
+										 <label class="checkbox"><input name="printer" type="checkbox" value="1"> Select printer
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Send the Chargeback Report to OPC(Card production Team) and wait for their go ahead before uploading the file
+										 <label class="checkbox"><input name="chargeback_opc" type="checkbox" value="1"> Send the Chargeback Report to OPC(Card production Team) and wait for their go ahead before uploading the file
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Cd /sparrow/TZ/PRD/sparrow8/floppy/bak
+										 <label class="checkbox"><input name="cd_bak" type="checkbox" value="1"> Cd /sparrow/TZ/PRD/sparrow8/floppy/bak
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy the pst*** files to /sparrow/TZ/PRD/sparrow8/extracts
+										 <label class="checkbox"><input name="copy_extract" type="checkbox" value="1"> Copy the pst*** files to /sparrow/TZ/PRD/sparrow8/extracts
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> change files permissions to chmod 660
+										 <label class="checkbox"><input name="chmod_2" type="checkbox" value="1"> change files permissions to chmod 660
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Login to the ENA FOREGROUND -> A/Rpt
+										 <label class="checkbox"><input name="login_ena_rpt" type="checkbox" value="1"> Login to the ENA FOREGROUND -> A/Rpt
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> A/Rpt B1 Not Cleared txn
+										 <label class="checkbox"><input name="b1_not_cleared_txn" type="checkbox" value="1"> A/Rpt B1 Not Cleared txn
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> A/Rpt B1 Cleared txn
+										 <label class="checkbox"><input name="b1_cleared_txn" type="checkbox" value="1"> A/Rpt B1 Cleared txn
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> A/Rpt B1 Not Authed txn
+										 <label class="checkbox"><input name="b1_not_auth_txn" type="checkbox" value="1"> A/Rpt B1 Not Authed txn
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> A/Rpt - B1 Authed txn
+										 <label class="checkbox"><input name="b1_auth_txn" type="checkbox" value="1"> A/Rpt - B1 Authed txn
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> A/Rpt - B1 All txn
+										 <label class="checkbox"><input name="login_tnx" type="checkbox" value="1"> A/Rpt - B1 All txn
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Maint-> Purge Outgoing Chgbk Logs
+										 <label class="checkbox"><input name="chgbk_logs" type="checkbox" value="1"> Maint-> Purge Outgoing Chgbk Logs
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Login to Sparrow Foreground(spalogon.sh)
+										 <label class="checkbox"><input name="login_sparrow" type="checkbox" value="1"> Login to Sparrow Foreground(spalogon.sh)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Upload ENA B2 Posting Files
+										 <label class="checkbox"><input name="ena_b2_files" type="checkbox" value="1"> Upload ENA B2 Posting Files
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Login to ENA Foreground(enalogon.sh)
+										 <label class="checkbox"><input name="login_ena" type="checkbox" value="1"> Login to ENA Foreground(enalogon.sh)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> S/Rpt-> CSV Extracts
+										 <label class="checkbox"><input name="csv_extracts" type="checkbox" value="1"> S/Rpt-> CSV Extracts
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> S/Rpt-> Settlement Report
+										 <label class="checkbox"><input name="settlement" type="checkbox" value="1"> S/Rpt-> Settlement Report
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Rename .ena file to settlementDDMMYY
+										 <label class="checkbox"><input name="rename_ena" type="checkbox" value="1"> Rename .ena file to settlementDDMMYY
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy rejected transactions PST*.spa to \sbictanfls02\d$\transactability\settlement\rejections
+										 <label class="checkbox"><input name="copy_rejected_tran" type="checkbox" value="1"> Copy rejected transactions PST*.spa to \sbictanfls02\d$\transactability\settlement\rejections
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy success transactions pst*.spa to \sbictanfls02\d$\transactability\settlement\pst
+										 <label class="checkbox"><input name="copy_success_tran" type="checkbox" value="1"> Copy success transactions pst*.spa to \sbictanfls02\d$\transactability\settlement\pst
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy settlementDDMMYY, base1-authorizedtransactions, ICHARGBK, IREPORT & TE513 from visa, T731 & D108 from master card to \\10.231.128.41\Recon_Automation\from_TZ
+										 <label class="checkbox"><input name="copy_settlement" type="checkbox" value="1"> Copy settlementDDMMYY, base1-authorizedtransactions, ICHARGBK, IREPORT & TE513 from visa, T731 & D108 from master card to \\10.231.128.41\Recon_Automation\from_TZ
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Coppy UPI Reports from connect direct UPI folder to \\sbictanfls02\d$\transactability\settlement\upi
+										 <label class="checkbox"><input name="copy_upi" type="checkbox" value="1"> Coppy UPI Reports from connect direct UPI folder to \\sbictanfls02\d$\transactability\settlement\upi
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Copy B1 Reports to authorization and non-authorization folder
+										 <label class="checkbox"><input name="copy_b1" type="checkbox" value="1"> Copy B1 Reports to authorization and non-authorization folder
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Confirm all the above processes has been done
+										 <label class="checkbox"><input name="confirm" type="checkbox" value="1"> Confirm all the above processes has been done
                                     </div>
 									
                                     
