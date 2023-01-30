@@ -493,40 +493,40 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
                                     <div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Download patches and release notes to your PC
+										 <label class="checkbox"><input name="download_patch" type="checkbox" value="1"> Download patches and release notes to your PC
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Read the release notes carefully to understand the content/other details of a particular patch	
+										 <label class="checkbox"><input name="read_release" type="checkbox" value="1"> Read the release notes carefully to understand the content/other details of a particular patch
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Transfer downloaded patches to ../APDM/Patches in binary mode with 770 as permission
+										 <label class="checkbox"><input name="transfer_patch" type="checkbox" value="1"> Transfer downloaded patches to ../APDM/Patches in binary mode with 770 as permission
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Login to Finacle CAP1 and invoke admin command
+										 <label class="checkbox"><input name="login_finacle" type="checkbox" value="1"> Login to Finacle CAP1 and invoke admin command
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Select 6 option - select number 1 option
+										 <label class="checkbox"><input name="section_6_option" type="checkbox" value="1"> Select 6 option - select number 1 option
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> On APDM tool copy and paste all the patches required for deployment in sequence,max number of patches per deployment is 10 patches
+										 <label class="checkbox"><input name="apdm_copy_paste" type="checkbox" value="1"> On APDM tool copy and paste all the patches required for deployment in sequence,max number of patches per deployment is 10 patches
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Start deploying the patches using APDM tool
+										 <label class="checkbox"><input name="deploy_apdm_tool" type="checkbox" value="1"> Start deploying the patches using APDM tool
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Repeat the same sequency if you have more that 10 patches for deployment
+										 <label class="checkbox"><input name="repeat_sequency" type="checkbox" value="1"> Repeat the same sequency if you have more that 10 patches for deployment
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Go to /APDM/APDM_WORK/explode /PRxx_CORE_yyy_cust and check for sqls(find . -name *.sql)
+										 <label class="checkbox"><input name="apdm_work" type="checkbox" value="1"> Go to /APDM/APDM_WORK/explode /PRxx_CORE_yyy_cust and check for sqls(find . -name *.sql)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Go to the path containing the sqls and login to the database using sqlplus command
+										 <label class="checkbox"><input name="path_sqls" type="checkbox" value="1"> Go to the path containing the sqls and login to the database using sqlplus command
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Execute sqls/configurations/BPDs that came with the patch
+										 <label class="checkbox"><input name="execute_sqls" type="checkbox" value="1"> Execute sqls/configurations/BPDs that came with the patch
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Check in the SQL developer if the patches has been deployed successful select * from apdmadm.apdm_rep where patch_id like '%xxxxxx%';
+										 <label class="checkbox"><input name="sql_developer" type="checkbox" value="1"> Check in the SQL developer if the patches has been deployed successful select * from apdmadm.apdm_rep where patch_id like '%xxxxxx%';
                                     </div>
   
                                     <div class="footer tar">
@@ -592,9 +592,7 @@ if ($user->isLoggedIn()) {
 									<div class="row-form clearfix">
 										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Super (Card and ATM History Purge).This can be run every jan of each year Start year put the current year you are in and end year put the last year.
                                     </div>
-									
 
-                                    
                                     <div class="footer tar">
                                         <input type="submit" name="ora_dba" value="Submit" class="btn btn-default">
                                     </div>
@@ -611,49 +609,49 @@ if ($user->isLoggedIn()) {
                                 <form id="validation" method="post">
 
                                     <div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Super Archive/Purge ExpiredB1 Type C to continue with default settings Press any key Press any key
+										 <label class="checkbox"><input name="super_archive" type="checkbox" value="1"> Super Archive/Purge ExpiredB1 Type C to continue with default settings Press any key Press any key
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Maint - Purge Settlm Logs Input date YYDDD (Julian date format) and Press Enter Type C Wait until Purging has been completed Press any key
+										 <label class="checkbox"><input name="purge_logs" type="checkbox" value="1"> Maint - Purge Settlm Logs Input date YYDDD (Julian date format) and Press Enter Type C Wait until Purging has been completed Press any key
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Maint - Purge Outgoing Chgbk Logs Input date YYDDD (Julian date format) and Press Enter Type C Press any key
+										 <label class="checkbox"><input name="purge_outgoing" type="checkbox" value="1"> Maint - Purge Outgoing Chgbk Logs Input date YYDDD (Julian date format) and Press Enter Type C Press any key
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Diag - Purge the event log Input date YYMMDD Press any key Input date YYMMDD Press any key Input date YYMMDD Press any key
+										 <label class="checkbox"><input name="purge_event_log" type="checkbox" value="1"> Diag - Purge the event log Input date YYMMDD Press any key Input date YYMMDD Press any key Input date YYMMDD Press any key
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Super - Purge EMV ICC Activity Log Press any key Type Y Press any key
+										 <label class="checkbox"><input name="purge_emv" type="checkbox" value="1"> Super - Purge EMV ICC Activity Log Press any key Type Y Press any key
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> SNET Clear SparrowNet Log Press any key Type 0001 Press ENTER
+										 <label class="checkbox"><input name="snet" type="checkbox" value="1"> SNET Clear SparrowNet Log Press any key Type 0001 Press ENTER
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Files - Service Maintenance Type C Type F6 Type Y
+										 <label class="checkbox"><input name="files" type="checkbox" value="1"> Files - Service Maintenance Type C Type F6 Type Y
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Main Menu Sparrow System Control Login as ptzspwusr Type spastop.sh
+										 <label class="checkbox"><input name="main_menu" type="checkbox" value="1"> Main Menu Sparrow System Control Login as ptzspwusr Type spastop.sh
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> This process to be conducted once in a month (i.e. the second week (Wednesday) of every month) Sparrow Files Compress and Rebuild process Main Menu System Maintenance Press Enter Press Enter Press Enter
+										 <label class="checkbox"><input name="monthly_process" type="checkbox" value="1"> This process to be conducted once in a month (i.e. the second week (Wednesday) of every month) Sparrow Files Compress and Rebuild process Main Menu System Maintenance Press Enter Press Enter Press Enter
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Logon as pccspwmgr and Run Weekly Bintable Update Sparrow Main Menu System Maintenance Scroll down to Weekly Bintable Update Follow the step in the below table -Do you wish to continue with this process? (Y/N) *Please note that Sparrow will be stopped* -Do the sum and file sizes match those sent by Centre? (Y/N) -Send screenshot to centre team If an: ERROR is displayed process stops. Get the latest file bintable.ntr.gz onto extracts and re-do the process Type Y ? Press Enter Type Y ? if the sizes match Type N ? if they don?t match (Old bintable will be restored) Press
+										 <label class="checkbox"><input name="logon_pccspwmgr" type="checkbox" value="1"> Logon as pccspwmgr and Run Weekly Bintable Update Sparrow Main Menu System Maintenance Scroll down to Weekly Bintable Update Follow the step in the below table -Do you wish to continue with this process? (Y/N) *Please note that Sparrow will be stopped* -Do the sum and file sizes match those sent by Centre? (Y/N) -Send screenshot to centre team If an: ERROR is displayed process stops. Get the latest file bintable.ntr.gz onto extracts and re-do the process Type Y ? Press Enter Type Y ? if the sizes match Type N ? if they don?t match (Old bintable will be restored) Press
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Backup spn*logs Delete all spn*_log files of previous week(s)
+										 <label class="checkbox"><input name="backup" type="checkbox" value="1"> Backup spn*logs Delete all spn*_log files of previous week(s)
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Start Sparrow
+										 <label class="checkbox"><input name="start_sparrow" type="checkbox" value="1"> Start Sparrow
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Sparrow Foreground Files - Service Maintenance
+										 <label class="checkbox"><input name="sparrow_foreground" type="checkbox" value="1"> Sparrow Foreground Files - Service Maintenance
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Type O Type F6 Type Y	
+										 <label class="checkbox"><input name="type_0__type6" type="checkbox" value="1"> Type O Type F6 Type Y
                                     </div>
 									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="precaution" type="checkbox" value="1"> Run script A file named filelist.txt will be created on /sparrow/XX/PRD/sparrow8/files.	
+										 <label class="checkbox"><input name="run_script" type="checkbox" value="1"> Run script A file named filelist.txt will be created on /sparrow/XX/PRD/sparrow8/files.
                                     </div>
 								
                                     
