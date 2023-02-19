@@ -40,6 +40,40 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
 				'approval_id' => $user->data()->id,
 			),Input::get('id'));
             $successMessage = 'Request Declined Successful';
+		}elseif(Input::get('re_submit')){
+			$user->updateRecord('request', array(
+               
+                        'requester_id' => Input::get('requester_id'),
+                        'department' => Input::get('department'),
+                        'unit' => Input::get('unit'),
+						'location' => Input::get('location'),
+                        'visitor_name' => Input::get('visitor_name'),
+						'visitor_org' => Input::get('visitor_org'),
+						'visitor_phone' => Input::get('visitor_phone'),
+						'visitor_email' => Input::get('visitor_email'),
+						'visitor_address' => Input::get('visitor_address'),
+						'start_date' => Input::get('start_date'),
+						'start_time' => Input::get('start_time'),
+						'end_date' => Input::get('end_date'),
+						'end_time' => Input::get('end_time'),
+						'textarea' => Input::get('textarea'),
+                        'staff_id' => $user->data()->id,
+						'status' => 0,
+				
+			),Input::get('id'));
+            $successMessage = 'Request Updated Successful';
+		}elseif(Input::get('extend_time')){
+			$user->createRecord('time_extension', array(
+						'start_time' => Input::get('start_time'),
+						'end_time' => Input::get('end_time'),
+						'reasons' => Input::get('reasons'),
+						'request_id' => Input::get('id'),
+						'request_date' => date('Y-m-d'),
+                        'staff_id' => $user->data()->id,
+
+				
+			));
+            $successMessage = 'Request Updated Successful';
 		}
 			 
             
@@ -170,10 +204,8 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" name="checkall" /></th>
-                                    <th width="10%">Requester Name</th>
-                                    <th width="5%">Requester ID</th>
-                                    <th width="15%">Visitor Name</th>
-                                    <th width="40%">Visitor Reason</th>
+									<th width="20%">Visitor Name</th>
+                                    <th width="50%">Reason</th>
 									<th width="10%">Status</th>
                                     <th width="20%">Action</th>
                                 </tr>
@@ -182,10 +214,8 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
 								<?php foreach($override->get('request', 'staff_id', $user->data()->id) as $request){?>
 									   <tr>
 											<td><input type="checkbox" name="checkbox" /></td>
-											<td><?=$request['requester_name']?></td>
-											<td><?=$request['requester_id']?></td>
 											<td><?=$request['visitor_name']?></td>
-											<td><?=$request['textarea']?></td>
+											<td><?php if($request['status'] == 2){echo $request['approval_comment'];}else{echo $request['textarea'];}?></td>
 											<td>
 												<?php if($request['status'] == 1){?>
 												<a href="#" role="button" class="btn btn-success" >Approved</a>
@@ -198,6 +228,11 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
 											</td>
 											<td>
 												<a href="#view<?=$request['id']?>" role="button" class="btn btn-default" data-toggle="modal">View</a>
+												<?php if($request['status']==2){?>
+													<a href="#resubmit<?=$request['id']?>" role="button" class="btn btn-success" data-toggle="modal">Re Submit</a>
+												<?php }elseif($request['status']== 1 ){?>
+													<a href="#extend<?=$request['id']?>" role="button" class="btn btn-info" data-toggle="modal">Extend Time</a>
+												<?php }?>
 												
 											</td>
 										</tr>
@@ -213,33 +248,9 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
 															<div class="row">
 																<div class="block-fluid">
 																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester Name:</div>
+																		<div class="col-md-3">Location:</div>
 																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_name']?>" type="text" name="requester_name" id="requester_name" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester ID:</div>
-																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_id']?>" type="text" name="requester_id" id="requester_id" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Department</div>
-																		<div class="col-md-9">
-																			<select name="department" style="width: 100%;" required>
-																				<option value=""><?=$request['department']?></option>
-																				
-																			</select>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Unit</div>
-																		<div class="col-md-9">
-																			<select name="unit" style="width: 100%;" required>
-																				<option value=""><?=$request['unit']?></option>
-																			
-																			</select>
+																			<input class="validate[required]" value="<?=$request['location']?>" type="text" name="location" id="location" disabled/>
 																		</div>
 																	</div>
 																	<div class="row-form clearfix">
@@ -310,6 +321,139 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
 												</form>
 											</div>
 										</div>
+										<div class="modal fade" id="resubmit<?=$request['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<form method="post">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+															<h4>Re Submit Request</h4>
+														</div>
+														<div class="modal-body modal-body-np">
+															<div class="row">
+																<div class="block-fluid">
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Location: </div>
+																		<div class="col-md-9">
+																			<select name="location" style="width: 100%;" required>
+																				<option value="<?=$request['location']?>"><?php if($request['location']){echo $request['location'];}else{echo 'Select Location';}?></option>	
+																				<option value="On Premises">On Premises</option>	
+																				<option value="DR">DR</option>														
+																			</select>
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Visitor Name:</div>
+																		<div class="col-md-9">
+																			<input class="validate[required]" value="<?=$request['visitor_name']?>" type="text" name="visitor_name" id="visitor_name" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Visitor Organisation:</div>
+																		<div class="col-md-9">
+																			<input class="validate[required]" value="<?=$request['visitor_org']?>" type="text" name="visitor_org" id="visitor_org" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Visitor Phone Number:</div>
+																		<div class="col-md-9"><input value="<?=$request['visitor_phone']?>" class="" type="text" name="visitor_phone" id="phone" required /> <span>Example: 0700 000 111</span></div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Visitor Email Address:</div>
+																		<div class="col-md-9"><input value="<?=$request['visitor_email']?>" class="validate[required,custom[email]]" type="text" name="visitor_email" id="email" /> <span>Example: someone@nowhere.com</span></div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Visitor Address:</div>
+																		<div class="col-md-9">
+																			<input value="<?=$request['visitor_address']?>" class="validate[required]" type="text" name="visitor_address" id="visitor_address" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Start Date:</div>
+																		<div class="col-md-9">
+																			<input value="<?=$request['start_date']?>" class="validate[required,custom[date]]" type="text" name="start_date" id="start_date" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Start Time:</div>
+																		<div class="col-md-9">
+																			<input value="<?=$request['start_time']?>" class="validate[required]" type="text" name="start_time" id="start_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">End Date:</div>
+																		<div class="col-md-9">
+																			<input value="<?=$request['end_date']?>" class="validate[required,custom[date]]" type="text" name="end_date" id="end_date" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">End Time:</div>
+																		<div class="col-md-9">
+																			<input value="<?=$request['end_time']?>" class="validate[required]" type="text" name="end_time" id="end_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Reasons:</div>
+																		<div class="col-md-9">
+																		   <textarea name="textarea" placeholder="Reason for visit..." ><?=$request['textarea']?></textarea>
+																		</div>
+																	</div>
+																	<div class="dr"><span></span></div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<input type="hidden" name="id" value="<?=$request['id']?>">
+																<input type="submit" name="re_submit" value="Submit" class="btn btn-success">
+																<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div class="modal fade" id="extend<?=$request['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<form method="post">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+															<h4>Extend Time for the Visitor</h4>
+														</div>
+														<div class="modal-body modal-body-np">
+															<div class="row">
+																<div class="block-fluid">
+																	
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Start Time:</div>
+																		<div class="col-md-9">
+																			<input value="" class="validate[required]" type="text" name="start_time" id="start_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">End Time:</div>
+																		<div class="col-md-9">
+																			<input value="" class="validate[required]" type="text" name="end_time" id="end_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Reasons:</div>
+																		<div class="col-md-9">
+																		   <textarea name="reasons" placeholder="Reason for extending time..." ></textarea>
+																		</div>
+																	</div>
+																	<div class="dr"><span></span></div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<input type="hidden" name="id" value="<?=$request['id']?>">
+																<input type="submit" name="extend_time" value="Submit" class="btn btn-success">
+																<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+															</div>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
 										<div class="modal fade" id="approve<?=$request['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 											<div class="modal-dialog">
 												<form method="post">
@@ -362,6 +506,11 @@ if ($user->isLoggedIn() and $user->data()->power ==0) {
             </div>
         </div>
     </div>
+	<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>

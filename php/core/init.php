@@ -4,7 +4,7 @@ session_start();
 $GLOBALS['config'] = array(
   'mysql' => array(
       'host' => 'localhost',
-      'username' => 'dap',
+      'username' => '',
       'password' => '',
       'db' => 'ptzdap'
   	),
@@ -22,7 +22,15 @@ $GLOBALS['config'] = array(
 spl_autoload_register(function($class){
 	require_once 'php/classes/'.$class.'.php';
 });
-
+date_default_timezone_set("Africa/Nairobi");
+//include_once 'php/functions/sanitize.php';
+//include_once 'php/classes/OverideData.php';
+//include_once 'php/classes/class.upload.php';
+include_once "php/phpMailer/PHPMailer.php";
+include_once "php/phpMailer/Exception.php";
+include_once "php/phpMailer/SMTP.php";
+include_once "php/phpMailer/POP3.php";
+include_once "php/phpMailer/OAuth.php";
 
 
 if(Cookie::exists(config::get('remember/cookie_name')) && !Session::exists(config::get('session/session_name'))){

@@ -17,14 +17,14 @@ if ($user->isLoggedIn()) {
                
                 
             ));
-            if ($validate->passed()) {
-               
-                try {
+            if ($validate->passed()) {print_r(Input::get('start_date'));
+               //if((Input::get('start_date') >= date('Y-m-d')) && (Input::get('end_date') >= Input::get('start_date'))){
+				   try {
                     $user->createRecord('request', array(
-                        'requester_name' => Input::get('requester_name'),
                         'requester_id' => Input::get('requester_id'),
                         'department' => Input::get('department'),
                         'unit' => Input::get('unit'),
+						'location' => Input::get('location'),
                         'visitor_name' => Input::get('visitor_name'),
 						'visitor_org' => Input::get('visitor_org'),
 						'visitor_phone' => Input::get('visitor_phone'),
@@ -41,6 +41,9 @@ if ($user->isLoggedIn()) {
                 } catch (Exception $e) {
                     die($e->getMessage());
                 }
+			   //}else{
+				//   $errorMessage = 'Start date must be >= Current Date and End Date must be >= Start Date';
+			  // }
             } else {
                 $pageError = $validate->errors();
             }
@@ -162,46 +165,16 @@ if ($user->isLoggedIn()) {
                             </div>
                             <div class="block-fluid">
                                 <form id="validation" method="post">
-
-                                    <div class="row-form clearfix">
-                                        <div class="col-md-3">Requester Name:</div>
-                                        <div class="col-md-9">
-                                            <input value="" class="validate[required]" type="text" name="requester_name" id="requester_name" />
-                                        </div>
-                                    </div>
-                                    <div class="row-form clearfix">
-                                        <div class="col-md-3">Requester ID:</div>
-                                        <div class="col-md-9">
-                                            <input value="" class="validate[required]" type="text" name="requester_id" id="requester_id" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row-form clearfix">
-                                        <div class="col-md-3">Department</div>
-                                        <div class="col-md-9">
-                                            <select name="department" style="width: 100%;" required>
-                                                <option value="">Select Department</option>
-                                                <option value="IT">Information Technology (IT)</option>
-                                                <option value="other">Other</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row-form clearfix">
-                                        <div class="col-md-3">Unit</div>
-                                        <div class="col-md-9">
-                                            <select name="unit" style="width: 100%;" required>
-                                                <option value="">Select Unit</option>
-                                                <option value="Application">Application</option>
-                                                <option value="Datacenter">Datacenter</option>
-                                                <option value="IT Channel">IT Channel</option>
-                                                <option value="IT Peripheral">IT Peripheral</option>
-                                                <option value="IT Security">IT Security</option>
-                                                <option value="Real Estate">Real Estate</option>
-                                                <option value="IT Infrastructure">IT Infrastructure</option>
-                                            </select>
-                                        </div>
-                                    </div>
+									<div class="row-form clearfix">
+										<div class="col-md-3">Location</div>
+										<div class="col-md-9">
+											<select name="location" style="width: 100%;" required>
+												<option value="">Select Location</option>	
+												<option value="On Premises">On Premises</option>	
+												<option value="DR">DR</option>														
+											</select>
+										</div>
+									</div>
                                     <div class="row-form clearfix">
                                         <div class="col-md-3">Visitor Name:</div>
                                         <div class="col-md-9">
@@ -256,7 +229,7 @@ if ($user->isLoggedIn()) {
                                     <div class="row-form clearfix">
                                         <div class="col-md-3">Reasons:</div>
                                         <div class="col-md-9">
-                                           <textarea name="textarea" placeholder="Reason for visit..."></textarea>
+                                           <textarea name="textarea" placeholder="Reason for visit..." required></textarea>
                                         </div>
                                     </div>
 
@@ -275,6 +248,11 @@ if ($user->isLoggedIn()) {
 
         </div>   
     </div>
+	<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>

@@ -51,7 +51,8 @@
                         <span class="isw-list"></span><span class="text">Check List</span>
                     </a>
                     <ul>
-                        <li>
+					<?php if($user->data()->accessLevel == 4){ ?>
+					 <li>
                             <a href="checklist.php?id=1">
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> ORACLE DBA Checklist </span>
                             </a>                  
@@ -61,11 +62,18 @@
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> SQL DBA Checklist </span>
                             </a>                  
                         </li>
+					<?php }?>
+                       
+					   <?php if($user->data()->accessLevel == 3){ ?>
+						<!-- get end of month date if(date('Y-m-d') == date("Y-m-t", strtotime(date('Y-m-d'))) -->
+						<?php if(date('Y-m-d') == date('Y-m-d', strtotime('12/31'))){?>
 						<li>
                             <a href="checklist.php?id=3">
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> Finacle EOY Checklist </span>
                             </a>                  
-                        </li>	
+                        </li>
+						<?php }?>
+							
 						<li>
                             <a href="checklist.php?id=4">
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> ENA Checklist </span>
@@ -101,11 +109,14 @@
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> SOD Checklist </span>
                             </a>                  
                         </li>
+						<?php }?>
+						
 						<li>
                             <a href="checklist.php?id=11">
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> DR Restore Weekly Checklist </span>
                             </a>                  
                         </li>
+						<?php if($user->data()->accessLevel == 3){ ?>
 						<li>
                             <a href="checklist.php?id=12">
                                 <span class="glyphicon glyphicon-th"></span><span class="text"> Finacle EOD Checklist</span>
@@ -117,10 +128,11 @@
                             </a>                  
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="info.php?id=1">
                                 <span class="glyphicon glyphicon-th-large"></span><span class="text"> Checklist History </span>
                             </a>                  
                         </li>
+						<?php }?>
                     </ul>                
                 </li>
 				<?php }?>
@@ -141,6 +153,40 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+				<li class="openable">
+                    <a href="#">
+                        <span class="isw-list"></span><span class="text">Checklist</span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="info.php?id=1">
+                                <span class="glyphicon glyphicon-th"></span><span class="text">Today Checklist</span>
+                            </a>                  
+                        </li>          
+                        <li>
+                            <a href="info.php?id=2">
+                                <span class="glyphicon glyphicon-th-large"></span><span class="text">Checklist History</span>
+                            </a>                  
+                        </li>
+                    </ul>                
+                </li>
+				<li class="openable">
+                    <a href="#">
+                        <span class="isw-list"></span><span class="text">Admin </span>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="add.php?id=1">
+                                <span class="glyphicon glyphicon-th"></span><span class="text">Permission</span>
+                            </a>                  
+                        </li>          
+                        <li>
+                            <a href="request_list.php">
+                                <span class="glyphicon glyphicon-th-large"></span><span class="text">Manage</span>
+                            </a>                  
+                        </li>
+                    </ul>                
                 </li>
 				<?php }?>
             </ul>

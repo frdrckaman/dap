@@ -170,10 +170,8 @@ if ($user->isLoggedIn() and $user->data()->power ==1) {
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" name="checkall" /></th>
-                                    <th width="10%">Requester Name</th>
-                                    <th width="5%">Requester ID</th>
-                                    <th width="15%">Visitor Name</th>
-                                    <th width="40%">Visitor Reason</th>
+                                    <th width="20%">Visitor Name</th>
+                                    <th width="50%">Reason</th>
 									<th width="10%">Status</th>
                                     <th width="20%">Action</th>
                                 </tr>
@@ -182,10 +180,8 @@ if ($user->isLoggedIn() and $user->data()->power ==1) {
 								<?php foreach($override->getData('request') as $request){?>
 									   <tr>
 											<td><input type="checkbox" name="checkbox" /></td>
-											<td><?=$request['requester_name']?></td>
-											<td><?=$request['requester_id']?></td>
 											<td><?=$request['visitor_name']?></td>
-											<td><?=$request['textarea']?></td>
+											<td><?php if($request['status'] == 2){echo $request['approval_comment'];}else{echo $request['textarea'];}?></td>
 											<td>
 												<?php if($request['status'] == 1){?>
 												<a href="#" role="button" class="btn btn-success" >Approved</a>
@@ -213,33 +209,9 @@ if ($user->isLoggedIn() and $user->data()->power ==1) {
 															<div class="row">
 																<div class="block-fluid">
 																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester Name:</div>
+																		<div class="col-md-3">Location:</div>
 																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_name']?>" type="text" name="requester_name" id="requester_name" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester ID:</div>
-																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_id']?>" type="text" name="requester_id" id="requester_id" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Department</div>
-																		<div class="col-md-9">
-																			<select name="department" style="width: 100%;" required>
-																				<option value=""><?=$request['department']?></option>
-																				
-																			</select>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Unit</div>
-																		<div class="col-md-9">
-																			<select name="unit" style="width: 100%;" required>
-																				<option value=""><?=$request['unit']?></option>
-																			
-																			</select>
+																			<input class="validate[required]" value="<?=$request['location']?>" type="text" name="location" id="location" disabled/>
 																		</div>
 																	</div>
 																	<div class="row-form clearfix">

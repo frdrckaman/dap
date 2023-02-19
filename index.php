@@ -18,13 +18,11 @@ if(!$user->isLoggedIn()) {
             if ($validate->passed()) { 
                 		
 				$userCheck=$override->get('user', 'username', $username);
-//					if(!$userCheck){
-//						$user->createRecord('user', array(
-//							'username' => Input::get('username'),
-//						));
-//					}
-//					$login = $user->ldapLogin(Input::get('username'), Input::get('password'), 'user');
-                    $login = $user->loginUser(Input::get('username'), Input::get('password'), 'user');
+					if(!$userCheck){
+						$user->createRecord('user', array(
+							'username' => Input::get('username'),
+						));						}
+					$login = $user->ldapLogin(Input::get('username'), Input::get('password'), 'user');
                        if ($login) { 
                            $lastLogin = $override->get('user','id',$user->data()->id);
                            if($lastLogin[0]['last_login'] == date('Y-m-d')){}else{
@@ -136,6 +134,11 @@ if(!$user->isLoggedIn()) {
         </div>
 		<?php include 'sig.php'?>
     </div>
+	<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
     
 </body>
 

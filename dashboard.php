@@ -9,6 +9,41 @@ $successMessage = null;
 $pageError = null;
 $errorMessage = null;
 if ($user->isLoggedIn()) {
+	//$email->sendEmail('fredrick.amani@stanbic.co.tz', 'Alert Test');
+	if (Input::get('approve_request')) {
+            $validate = new validate();
+            $validate = $validate->check($_POST, array(
+                   
+            ));
+            if ($validate->passed()) {
+               
+                try {
+					$user->updateRecord('request', array(
+						'status' => 1,
+						'approval_date' => date('Y-m-d'),
+						'approval_comment' => Input::get('comments'),
+						'approval_id' => $user->data()->id,
+						),Input::get('id'));
+                    $successMessage = 'Checklist Updated Successful';
+                } catch (Exception $e) {
+                    die($e->getMessage());
+                }
+            } else {
+                $pageError = $validate->errors();
+            }
+        }elseif(Input::get('decline_request')){
+			try {
+					$user->updateRecord('request', array(
+						'status' => 2,
+						'approval_comment' => Input::get('comments'),
+						'approval_date' => date('Y-m-d'),
+						'approval_id' => $user->data()->id,
+						),Input::get('id'));
+                    $successMessage = 'Checklist Updated Successful';
+                } catch (Exception $e) {
+                    die($e->getMessage());
+                }
+		}
 } else {
     Redirect::to('index.php');
 }
@@ -142,22 +177,19 @@ if ($user->isLoggedIn()) {
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" name="checkall" /></th>
-                                    <th width="10%">Requester Name</th>
-                                    <th width="5%">Requester ID</th>
                                     <th width="15%">Visitor Name</th>
                                     <th width="40%">Visitor Reason</th>
 									<th width="10%">Status</th>
-                                    <th width="20%">Action</th>
+									<th width="10%">Time Extension</th>
+                                    <th width="25%">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-								<?php if($user->data()->power == 1){$data=$override->get('request', 'status', 0);}
-								else{$data=$override->getNews('request', 'staff_id', $user->data()->id, 'status', 0);} 
-								foreach($data as $request){?>
+								<?php if($user->data()->power == 1){$data=$override->get('request', 'status', 0);$time=$override->get('time_extension', 'status', 0);}
+								else{$data=$override->getNews('request', 'staff_id', $user->data()->id, 'status', 0);$time=$override->getNews('time_extension', 'staff_id', $user->data()->id, 'status', 0);} 
+								foreach($data as $request){if($request['approval_id']){$staff=$override->get('user', 'id', $request['approval_id'])[0]['username'];}?>
 									   <tr>
 											<td><input type="checkbox" name="checkbox" /></td>
-											<td><?=$request['requester_name']?></td>
-											<td><?=$request['requester_id']?></td>
 											<td><?=$request['visitor_name']?></td>
 											<td><?=$request['textarea']?></td>
 											<td>
@@ -168,11 +200,19 @@ if ($user->isLoggedIn()) {
 												<?php }else {?>
 												<a href="#" role="button" class="btn btn-warning" >Pending</a>
 												<?php }?>
-											
+										
+											</td>
+											<td>
+												<?php if($time){if($time[0]['status']==1){?>
+													<a href="#extend<?=$request['id']?>" role="button" class="btn btn-info" data-toggle="modal">Extend Time</a>
+												<?php }}?>
 											</td>
 											<td>
 												<a href="#view<?=$request['id']?>" role="button" class="btn btn-default" data-toggle="modal">View</a>
-												
+												<?php if($user->data()->power == 1){?>
+													<a href="#approve<?=$request['id']?>" role="button" class="btn btn-success" data-toggle="modal" <?php if($request['status'] == 1){echo 'disabled';}else{echo '';}?>>Approve</a>
+													<a href="#decline<?=$request['id']?>" role="button" class="btn btn-danger" data-toggle="modal"  <?php if($request['status'] == 1){echo 'disabled';}else{echo '';}?>>Decline</a>
+												<?php }?>
 											</td>
 										</tr>
 										<div class="modal fade" id="view<?=$request['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -187,33 +227,9 @@ if ($user->isLoggedIn()) {
 															<div class="row">
 																<div class="block-fluid">
 																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester Name:</div>
+																		<div class="col-md-3">Location:</div>
 																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_name']?>" type="text" name="requester_name" id="requester_name" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Requester ID:</div>
-																		<div class="col-md-9">
-																			<input class="validate[required]" value="<?=$request['requester_id']?>" type="text" name="requester_id" id="requester_id" disabled/>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Department</div>
-																		<div class="col-md-9">
-																			<select name="department" style="width: 100%;" required>
-																				<option value=""><?=$request['department']?></option>
-																				
-																			</select>
-																		</div>
-																	</div>
-																	<div class="row-form clearfix">
-																		<div class="col-md-3">Unit</div>
-																		<div class="col-md-9">
-																			<select name="unit" style="width: 100%;" required>
-																				<option value=""><?=$request['unit']?></option>
-																			
-																			</select>
+																			<input class="validate[required]" value="<?=$request['location']?>" type="text" name="location" id="location" disabled/>
 																		</div>
 																	</div>
 																	<div class="row-form clearfix">
@@ -293,7 +309,10 @@ if ($user->isLoggedIn()) {
 															<h4>Approve Request</h4>
 														</div>
 														<div class="modal-body">
-															<p>Are you sure you want to approve this request</p>
+															<?php if($request['approval_comment']){?>
+																<p style='color: red;'>This was inital decline by <strong><?=$staff?></strong> with reason : <strong><?=$request['approval_comment']?></strong></p>
+															<?php }?>
+															<p style='color: orange;'><strong>Are you sure you want to approve this request?</strong></p>
 														</div>
 														<div class="modal-footer">
 															<input type="hidden" name="id" value="<?=$request['id']?>">
@@ -310,17 +329,62 @@ if ($user->isLoggedIn()) {
 													<div class="modal-content">
 														<div class="modal-header">
 															<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-															<h4>Approve Decline</h4>
+															<h4>Decline Request</h4>
 														</div>
-														<div class="modal-body">
-															<strong style="font-weight: bold;color: red">
-																<p>Are you sure you want to decline this request</p>
-															</strong>
-														</div>
+														
+														<div class="row-form clearfix">
+															<div class="col-md-3">Comments:</div>
+																<div class="col-md-9">
+																   <textarea name="comments" placeholder="Reason for decline..." required></textarea>
+																</div>
+															</div>
 														<div class="modal-footer">
 															<input type="hidden" name="id" value="<?=$request['id']?>">
 															<input type="submit" name="decline_request" value="Decline" class="btn btn-danger">
 															<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+										<div class="modal fade" id="extend<?=$request['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<form method="post">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+															<h4>Extend Time for the Visitor</h4>
+														</div>
+														<div class="modal-body modal-body-np">
+															<div class="row">
+																<div class="block-fluid">
+																	
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Start Time:</div>
+																		<div class="col-md-9">
+																			<input value="" class="validate[required]" type="text" name="start_time" id="start_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">End Time:</div>
+																		<div class="col-md-9">
+																			<input value="" class="validate[required]" type="text" name="end_time" id="end_time" />
+																		</div>
+																	</div>
+																	<div class="row-form clearfix">
+																		<div class="col-md-3">Reasons:</div>
+																		<div class="col-md-9">
+																		   <textarea name="reasons" placeholder="Reason for extending time..." ></textarea>
+																		</div>
+																	</div>
+																	<div class="dr"><span></span></div>
+																</div>
+															</div>
+															<div class="modal-footer">
+																<input type="hidden" name="id" value="<?=$request['id']?>">
+																<input type="submit" name="extend_time" value="Submit" class="btn btn-success">
+																<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+															</div>
 														</div>
 													</div>
 												</form>
@@ -340,6 +404,11 @@ if ($user->isLoggedIn()) {
 
         </div>   
     </div>
+	<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
 </body>
 
 </html>
