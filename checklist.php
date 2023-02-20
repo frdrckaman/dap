@@ -1324,26 +1324,98 @@ if ($user->isLoggedIn()) {
                             <div class="block-fluid">
                                 <form id="validation" method="post">
 
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_backup_config" type="checkbox" value="1" <?php if($data){if($data['sql_backup_config']){ echo 'checked';}}?>> SQL - Ensure backups are configured properly and running
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_backup_config" type="checkbox" value="1" --><?php //if($data){if($data['sql_backup_config']){ echo 'checked';}}?><!-- SQL - Ensure backups are configured properly and running-->
+<!--                                    </div>-->
+
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Ensure backups are configured properly and running </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_backup_config" type="radio" value="1" <?php if($data){if($data['sql_backup_config']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_backup_config" id="sql_backup_config" type="radio" value="2" <?php if($data){if($data['sql_backup_config']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_backup_status" type="checkbox" value="1" <?php if($data){if($data['sql_backup_status']){ echo 'checked';}}?>> SQL - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually
+                                    <div id="sql_config"></div>
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_backup_status" type="checkbox" value="1" --><?php //if($data){if($data['sql_backup_status']){ echo 'checked';}}?><!-- SQL - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Confirm database backup completeness. If not completed/FAILED investigate and run the backups manually </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_backup_status" type="radio" value="1" <?php if($data){if($data['sql_backup_status']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_backup_status" type="radio" value="2" <?php if($data){if($data['sql_backup_status']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_disk_space" type="checkbox" value="1" <?php if($data){if($data['sql_disk_space']){ echo 'checked';}}?>> SQL - Ensure there is enough disk space on the database servers, if not backup and clear old files
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_disk_space" type="checkbox" value="1" --><?php //if($data){if($data['sql_disk_space']){ echo 'checked';}}?><!-- SQL - Ensure there is enough disk space on the database servers, if not backup and clear old files-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Ensure there is enough disk space on the database servers, if not backup and clear old files </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_disk_space" type="radio" value="1" <?php if($data){if($data['sql_disk_space']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_disk_space" type="radio" value="2" <?php if($data){if($data['sql_disk_space']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_availability" type="checkbox" value="1" <?php if($data){if($data['sql_availability']){ echo 'checked';}}?>> SQL - Connect and confirm availability of database servers, if not available escalate to network team
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_availability" type="checkbox" value="1" --><?php //if($data){if($data['sql_availability']){ echo 'checked';}}?><!-- SQL - Connect and confirm availability of database servers, if not available escalate to network team-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Connect and confirm availability of database servers, if not available escalate to network team </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_availability" type="radio" value="1" <?php if($data){if($data['sql_availability']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_availability" type="radio" value="2" <?php if($data){if($data['sql_availability']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_users" type="checkbox" value="1" <?php if($data){if($data['sql_users']){ echo 'checked';}}?>> SQL - Check if there are locked, expired and inactive users, if found investigate and action accordingly
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_users" type="checkbox" value="1" --><?php //if($data){if($data['sql_users']){ echo 'checked';}}?><!-- SQL - Check if there are locked, expired and inactive users, if found investigate and action accordingly-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Check if there are locked, expired and inactive users, if found investigate and action accordingly </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_users" type="radio" value="1" <?php if($data){if($data['sql_users']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_users" type="radio" value="2" <?php if($data){if($data['sql_users']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_sync" type="checkbox" value="1" <?php if($data){if($data['sql_sync']){ echo 'checked';}}?>> SQL - Ensure cluster servers are in sync between Production and DR
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_sync" type="checkbox" value="1" --><?php //if($data){if($data['sql_sync']){ echo 'checked';}}?><!-- SQL - Ensure cluster servers are in sync between Production and DR-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Ensure cluster servers are in sync between Production and DR </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_sync" type="radio" value="1" <?php if($data){if($data['sql_sync']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_sync" type="radio" value="2" <?php if($data){if($data['sql_sync']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
-									<div class="row-form clearfix">
-										 <label class="checkbox"><input name="sql_services" type="checkbox" value="1" <?php if($data){if($data['sql_services']){ echo 'checked';}}?>> SQL - Ensure listeners and their services are up and running
+<!--									<div class="row-form clearfix">-->
+<!--										 <label class="checkbox"><input name="sql_services" type="checkbox" value="1" --><?php //if($data){if($data['sql_services']){ echo 'checked';}}?><!-- SQL - Ensure listeners and their services are up and running-->
+<!--                                    </div>-->
+                                    <div class="row-form clearfix">
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"> SQL - Ensure listeners and their services are up and running </label>
+                                            </div>
+                                            <div class="form-group" style="margin-top: 5px;">
+                                                <label class="checkbox"><input name="sql_services" type="radio" value="1" <?php if($data){if($data['sql_services']==1){ echo 'checked';}}?>> Checked, Ok <input name="sql_services" type="radio" value="2" <?php if($data){if($data['sql_services']==2){ echo 'checked';}}?>> Checked, Exception</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     
                                     <div class="footer tar">
@@ -2646,6 +2718,26 @@ if ($user->isLoggedIn()) {
         if (window.history.replaceState) {
             window.history.replaceState(null, null, window.location.href);
         }
+
+        $(document).ready(function() {
+            $('#wait_ds').hide();
+            $('#sql_backup_config').change(function() {
+                var getUid = $(this).val();
+                $('#wait_ds').show();
+                $.ajax({
+                    url: "process.php?cnt=sql_backup",
+                    method: "GET",
+                    data: {
+                        getUid: getUid
+                    },
+                    success: function(data) {
+                        $('#sql_config').html(data);
+                        $('#wait_ds').hide();
+                    }
+                });
+            });
+
+        });
     </script>
 </body>
 
